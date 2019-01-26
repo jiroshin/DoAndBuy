@@ -1,7 +1,102 @@
+<!-- ▽▽▽ログインしているとき▽▽▽ -->
 <% if user_signed_in? %>
-<%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
 
-<% else %>
-<%= link_to '登録', new_user_registration_path %>
-<%= link_to 'ログイン', user_session_path %>
+<div class="swiper-container no_swipe">
+  <div class="swiper-wrapper">
+    
+    <div class="swiper-slide form-wrapper">
+      <div class="form-group">
+          <h1>やる気を出そう</h1>
+          <div class="createTask">目標を設定する</div>
+        </div>
+    </div>
+    
+    <div class="swiper-slide" style="text-align:center; margin-top:15px;">
+      <h1>欲しいものはなに？</h1>
+      <%= form_tag :search_tasks, method: :get, remote: true, class: "form-inline" do %>
+      <%= text_field_tag 'keyword', params[:keyword], class: 'form-control search_box', style: 'width:300px; margin:0 auto;' %>
+      <%= submit_tag '検索', class: 'createTask-button' %>
+      <% end %>
+  
+      <div id="Remote"></div>
+    
+    <%= form_for (@task) do |f| %>
+    <div class="choice-product-warrper">
+    <%= f.label :name, '選んだもの' %>
+    <%= f.text_field :name, class: 'form-control choice-product', readonly: true %>
+    </div>
+    
+    <%= f.hidden_field :url %>
+    <%= f.hidden_field :image_url %>
+    <div class="createTask-next createTask-nextSearch">つぎに進む</div>
+    </div>
+      
+    <div class="swiper-slide form-wrapper">
+      <div class="form-group">
+        <h1>何をやるの？</h1>
+        <%= f.text_area :goal, class: 'form-control', placeholder: "エベレストに登りたい！" %>
+        <div class="createTask-next">つぎに進む</div>
+      </div>
+    </div>
+    
+    <div class="swiper-slide form-wrapper">
+      <div class="form-group">
+        <h1>いつまでにやるの？</h1>
+        <%= f.date_field :deadline, class: 'form-control' %>
+        <div class="createTask-next">つぎに進む</div>
+      </div>
+    </div>
+    
+    
+    <div class="swiper-slide form-wrapper">
+      <div class="form-group">
+        <h1>さあ、やってみよう</h1>
+        <%= f.submit '目標を立てる！', class: 'createTask' %>
+      <% end %>
+      </div>
+    </div>
+  
+    
+  </div>
+  
+  <!-- ページネーションボタン-->
+  <div class="swiper-pagination"></div>
+  <!-- ナビゲーションボタン-->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+</div>
+
+<h1 style="text-align:center;">みんなの目標</h1>
+<% @tasks.each do |task| %>
+<div class="Tasks">
+  <div class="deadline"><%= task.deadline %>までに・・・</div>
+  <div class="goal"><%= task.goal %></div>
+  <div id="wrapper" class="product clearfix">
+    <div class="korewokau">そしてこれを買う <i class="fas fa-cart-arrow-down"></i></div>
+    <a href="<%= task.url %>" target="_blank">
+      <div class="float-left"><img src="<%= task.image_url %>" alt="商品画像"></div>
+      <div class="float-right"><%= task.name %></div>
+    </a>
+  </div>
+  <%= link_to(task_path(task.id)) do %>
+    <i class="far fa-comment"></i> コメントで応援する
+  <% end %>
+  <% if current_user == task.user %>
+    <%= link_to "削除する", task_path(task.id), method: :delete, data: { confirm: "本当に削除しますか?" }, class: 'btn btn-danger btn-xs' %>
+  <% end %>
+  <%= link_to(users_path(task.user)) do %>
+  <i class="far fa-user"></i> <%= task.user.username %>
+  <% end %>
+</div>
 <% end %>
+<div style="text-align:center;font-size: 130%;"><i class="far fa-arrow-alt-circle-right"></i> <%= link_to 'みんなの目標をもっとみる', tasks_path %></div>
+
+
+
+<!-- ▽▽▽ログインしていないとき▽▽▽ -->
+<% else %> 
+  <%= link_to '登録', new_user_registration_path %>
+  <%= link_to 'ログイン', user_session_path %>
+<% end %>
+

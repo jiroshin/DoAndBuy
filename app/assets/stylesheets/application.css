@@ -13,3 +13,181 @@
  *= require_tree .
  *= require_self
  */
+
+.title {
+  font-size: 25px;
+}
+
+
+.form-wrapper {
+  position: relative;
+  height: 550px;
+}
+
+.form-group {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+  width: 50%;
+  text-align: center;/*一応BOX内の文字も中央寄せ*/
+}
+
+.product-image {
+  padding: 20px;
+  margin: 20px;
+  border: solid red 4px;
+  border-radius: 5px;
+}
+
+.product-image:hover {
+  border: solid blue 4px;
+}
+
+.choice-product-warrper {
+  display: none;
+}
+
+.choice-product {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.createTask {
+    width: 70%;
+    position: relative;
+    display: inline-block;
+    padding: 0.75em 1em;
+    text-decoration: none;
+    color: #FFF;
+    background: red;/*背景色*/
+    border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+}
+
+.createTask:active {
+    border-bottom: solid 2px #fd9535;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+.createTask-next {
+    width: 130px;
+    position: relative;
+    display: inline-block;
+    padding: 0.75em 1em;
+    text-decoration: none;
+    color: #FFF;
+    background: red;/*背景色*/
+    border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+}
+
+.createTask-next:active {
+    border-bottom: solid 2px #fd9535;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+.createTask-button {
+    width: 150px;
+    position: relative;
+    display: inline-block;
+    padding: 0.5em 0.75em;
+    text-decoration: none;
+    color: #FFF;
+    background: grey;/*背景色*/
+    border-bottom: solid 2px black;/*少し濃い目の色に*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+}
+
+.createTask-button:active {
+    border-bottom: solid 2px #fd9535;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+.search_box {
+ 
+}
+
+.createTask-nextSearch {
+  display: none;
+}
+
+.navbar-default {
+  background-color: #fff;
+  border-bottom: 3px solid red;
+}
+
+.navbar {
+  margin-bottom: 0px; 
+}
+
+.Tasks {
+  border: 2px solid red;
+  border-radius: 5px;
+  margin:30px auto;
+  width:50%;
+}
+
+.deadline {
+  text-align: center;
+  font-size: 120%;
+}
+
+.korewokau {
+  text-align: center;
+  font-size: 115%;
+}
+
+.goal {
+  text-align: center;
+  font-size: 170%;
+  padding: 25px 0px;
+  font-weight: bold; 
+}
+
+/* 商品画像のclearfix */ 
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.float-left {
+  float: left;
+  width: 30%;
+  height: 150px;
+  text-align: center;
+}
+
+.float-right {
+  float: right;
+  width: 70%;
+  height: 150px;
+  padding: 4% 3%;
+  font-size: 90%;
+}
+
+@media (max-width: 768px) {
+.Tasks {
+  width:98%;
+}
+.float-left {
+  float: none;
+  width: 50%;
+  margin: 0 auto;
+}
+.float-right {
+  float: none;
+  width: 95%;
+  height: 150px;
+}
+
+}

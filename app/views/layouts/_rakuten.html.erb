@@ -1,0 +1,5 @@
+  <%= form_tag :search_tasks, method: :get, remote: true do %>
+  <%= text_field_tag 'keyword', params[:keyword] %>
+  <%= submit_tag('商品検索') %>
+  <% end %>
+  <div id="Remote"></div>

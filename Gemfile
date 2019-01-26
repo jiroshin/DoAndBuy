@@ -53,3 +53,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'rakuten_web_service'
+gem 'dotenv-rails'
+gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'

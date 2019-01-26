@@ -1,0 +1,34 @@
+<div class="Tasks">
+  <div class="deadline"><%= @task.deadline %>までに・・・</div>
+  <div class="goal"><%= @task.goal %></div>
+  <div id="wrapper" class="product clearfix">
+    <div class="korewokau">そしてこれを買う <i class="fas fa-cart-arrow-down"></i></div>
+    <a href="<%= @task.url %>" target="_blank">
+      <div class="float-left"><img src="<%= @task.image_url %>" alt="商品画像"></div>
+      <div class="float-right"><%= @task.name %></div>
+    </a>
+  </div>
+  <% if current_user == @task.user %>
+    <%= link_to "削除する", task_path(@task.id), method: :delete, data: { confirm: "本当に削除しますか?" }, class: 'btn btn-danger btn-xs' %>
+  <% end %>
+  <%= link_to(users_path(@task.user)) do %>
+    <i class="far fa-user"></i> <%= @task.user.username %>
+  <% end %>
+</div>
+
+
+<%= form_for [@task, @comment] do |f| %>
+  <%= f.text_field :content %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :task_id, :value => @task.id %>
+  <%= f.submit 'コメントする' %>
+<% end %>
+
+<h2>コメント一覧</h2>
+<% @comments.each do |c| %>
+  <%= c.user.username %>
+  <%= c.content %>
+<% end %>
+
+
+<center><%= link_to 'Toppageへ戻る', root_url %></center>

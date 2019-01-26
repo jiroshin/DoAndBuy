@@ -14,3 +14,41 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+  $('.single-item').slick();
+});
+
+$(function() {
+  var mySwiper = new Swiper ('.swiper-container', {
+    // オプション
+    preventClicks: true,
+    preventInteractionOnTransition: true,
+    noSwiping: true,
+    noSwipingClass: 'no_swipe',
+    
+    // ナビゲーション
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'progressbar',
+    },
+    
+  })
+});
+
+$(function(){
+$(".createTask").click(function(){
+    $(".swiper-button-next").click();
+});
+});
+
+$(function(){
+$(".createTask-next").click(function(){
+    $(".swiper-button-next").click();
+});
+});

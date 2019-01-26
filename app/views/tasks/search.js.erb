@@ -1,0 +1,24 @@
+$('#Remote').empty();
+
+<% @items.each do |key, value| %>
+  $('#Remote').append("<img src='<%= key[:image_url] %>' alt='画像' class ='product-image'><p style='background-color: grey; display:none;'><%= key[:name] %>,%¥<%= key[:url] %>,%¥<%= key[:image_url] %></p>")
+<% end %>
+
+
+$("#Remote img").on("click", function(){
+
+  $('.choice-product-warrper').css('display', 'block');
+  $('.createTask-nextSearch').css('display', 'inline-block');
+
+  var str = $(this).next('p').html()
+  str.toString();
+  var result = str.split(',%¥');
+
+  name = result[0]
+  url = result[1]
+  image_url = result[2]
+
+    $('#task_name').val(name);
+    $('#task_url').val(url);
+    $('#task_image_url').val(image_url);
+});
