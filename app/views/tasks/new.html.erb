@@ -34,7 +34,7 @@
     <div class="swiper-slide form-wrapper">
       <div class="form-group">
         <h1>何をやるの？</h1>
-        <%= f.text_area :goal, class: 'form-control', placeholder: "エベレストに登りたい！" %>
+        <%= f.text_area :goal, class: 'form-control', placeholder: "エベレストに登りたい！(最大200文字)" %>
         <div class="createTask-next">つぎに進む</div>
       </div>
     </div>
@@ -79,9 +79,10 @@
       <div class="float-right"><%= task.name %></div>
     </a>
   </div>
+  <div class="task-under">
   <%= render 'likes/like', task: task %>
   <%= link_to(task_path(task.id)) do %>
-    <i class="far fa-comment"></i> コメントで応援する
+    <i class="far fa-comment"></i> コメントで応援
   <% end %>
   <% if current_user == task.user %>
     <%= link_to "削除する", task_path(task.id), method: :delete, data: { confirm: "本当に削除しますか?" }, class: 'btn btn-danger btn-xs' %>
@@ -89,6 +90,7 @@
   <%= link_to(users_path(task.user)) do %>
   <i class="far fa-user"></i> <%= task.user.username %>
   <% end %>
+  </div>
 </div>
 <% end %>
 <div style="text-align:center;font-size: 130%;"><i class="far fa-arrow-alt-circle-right"></i> <%= link_to 'みんなの目標をもっとみる', tasks_path %></div>
@@ -101,7 +103,6 @@
   <%= link_to '登録', new_user_registration_path %>
   <%= link_to 'ログイン', user_session_path %>
   </div>
-<% end %>
 
 <% @tasks.each do |task| %>
 <div class="Tasks">
@@ -114,7 +115,11 @@
       <div class="float-right"><%= task.name %></div>
     </a>
   </div>
-  ♡️<%= task.likes.count %>
+  <div style="text-align:right;">
+  <i class="far fa-heart"></i> いいね<%= task.likes.count %>
   <i class="far fa-user"></i> <%= task.user.username %>
+  </div>
 </div>
+<% end %>
+
 <% end %>

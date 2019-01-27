@@ -10,9 +10,10 @@
       <div class="float-right"><%= task.name %></div>
     </a>
   </div>
+  <div class="task-under">
   <%= render 'likes/like', task: task %>
   <%= link_to(task_path(task.id)) do %>
-    <i class="far fa-comment"></i> コメントで応援する
+    <i class="far fa-comment"></i> コメントで応援
   <% end %>
   <% if current_user == task.user %>
     <%= link_to "削除する", task_path(task.id), method: :delete, data: { confirm: "本当に削除しますか?" }, class: 'btn btn-danger btn-xs' %>
@@ -20,6 +21,7 @@
   <%= link_to(users_path(task.user)) do %>
   <i class="far fa-user"></i> <%= task.user.username %>
   <% end %>
+  </div>
 </div>
 <% end %>
 

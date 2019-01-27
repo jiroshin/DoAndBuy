@@ -52,7 +52,7 @@
 
 .choice-product {
   width: 60%;
-  margin: 0 auto;
+  margin: 0 auto 10px;
 }
 
 .createTask {
@@ -179,6 +179,41 @@
   width:400px;
 }
 
+.task-under {
+  text-align: right;
+  padding-right: 5px;
+  font-size:120%;
+}
+
+.task-under a {
+  color:black;
+}
+
+.comment-form-wrapper {
+  text-align: center;
+}
+.comment-form {
+  width:400px;
+  margin: 0 auto;
+}
+
+.comment-index {
+  margin:0 auto;
+  width:400px;
+  margin-bottom: 10px;
+}
+
+#task_goal {
+  margin-bottom: 10px;
+}
+
+#task_deadline {
+  width:70%;
+  margin:0 auto 10px;
+}
+
+
+/* メディアクエリ */
 @media (max-width: 768px) {
 .Tasks {
   width:98%;
@@ -196,6 +231,18 @@
 
 .register_login {
   width:300px;
+}
+
+.comment-form {
+  width:300px;
+}
+
+.comment-index {
+  width:300px;
+}
+
+#task_deadline {
+  width:100%;
 }
 
 }

@@ -8,6 +8,7 @@
       <div class="float-right"><%= @task.name %></div>
     </a>
   </div>
+  <div class="task-under">
   <%= render 'likes/like', task: @task %>
   <% if current_user == @task.user %>
     <%= link_to "削除する", task_path(@task.id), method: :delete, data: { confirm: "本当に削除しますか?" }, class: 'btn btn-danger btn-xs' %>
@@ -15,20 +16,22 @@
   <%= link_to(users_path(@task.user)) do %>
     <i class="far fa-user"></i> <%= @task.user.username %>
   <% end %>
+  </div>
 </div>
 
 
-<%= form_for [@task, @comment] do |f| %>
-  <%= f.text_field :content %>
+<%= form_for [@task, @comment],  html: {class: 'comment-form-wrapper'} do |f| %>
+  <%= f.text_field :content, class: 'form-control comment-form' %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :task_id, :value => @task.id %>
   <%= f.submit 'コメントする' %>
 <% end %>
 
-<h2>コメント一覧</h2>
+<h2 style="text-align:center;">コメント一覧</h2>
 <% @comments.each do |c| %>
-  <%= c.user.username %>
-  <%= c.content %>
+  <div class="comment-index">
+  <i class="far fa-user"></i> <%= c.user.username %> : <%= c.content %>
+  </div>
 <% end %>
 
 
