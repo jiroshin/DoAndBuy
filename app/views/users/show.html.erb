@@ -1,4 +1,4 @@
-<h1><%= @user.username %>のページ</h1>
+<h1><%= @user.username %>の目標</h1>
 
 <% @tasks.each do |task| %>
 <div class="Tasks">
@@ -11,6 +11,7 @@
       <div class="float-right"><%= task.name %></div>
     </a>
   </div>
+  <%= render 'likes/like', task: task %>
   <%= link_to(task_path(task.id)) do %>
     <i class="far fa-comment"></i> コメントで応援する
   <% end %>
@@ -20,5 +21,29 @@
 </div>
 <% end %>
 <center><%= paginate @tasks %></center>
+
+<h1><%= @user.username %>がいいねした目標</h1>
+
+<% @like_tasks.each do |task| %>
+<div class="Tasks">
+  <div class="deadline"><%= task.deadline %>までに・・・</div>
+  <div class="goal"><%= task.goal %></div>
+  <div id="wrapper" class="product clearfix">
+    <div class="korewokau">そしてこれを買う <i class="fas fa-cart-arrow-down"></i></div>
+    <a href="<%= task.url %>" target="_blank">
+      <div class="float-left"><img src="<%= task.image_url %>" alt="商品画像"></div>
+      <div class="float-right"><%= task.name %></div>
+    </a>
+  </div>
+  <%= render 'likes/like', task: task %>
+  <%= link_to(task_path(task.id)) do %>
+    <i class="far fa-comment"></i> コメントで応援する
+  <% end %>
+  <% if current_user == task.user %>
+    <%= link_to "削除する", task_path(task.id), method: :delete, data: { confirm: "本当に削除しますか?" }, class: 'btn btn-danger btn-xs' %>
+  <% end %>
+</div>
+<% end %>
+<center><%= paginate @like_tasks %></center>
 
 <%= link_to 'Toppageへ戻る', root_url %>

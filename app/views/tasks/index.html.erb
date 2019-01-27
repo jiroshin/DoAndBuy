@@ -10,6 +10,7 @@
       <div class="float-right"><%= task.name %></div>
     </a>
   </div>
+  <%= render 'likes/like', task: task %>
   <%= link_to(task_path(task.id)) do %>
     <i class="far fa-comment"></i> コメントで応援する
   <% end %>

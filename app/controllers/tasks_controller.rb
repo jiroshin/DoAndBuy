@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     @task = current_user.tasks.build(task_params)
     
     if @task.save
-      flash[:notice] = '目標が正常に作成されました'
+      flash[:notice] = '目標が作成されました'
       redirect_to root_url
     else
       @tasks = Task.limit(5).order('created_at DESC') 
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     flash[:notice] = '目標を削除しました'
-    redirect_back(fallback_location: root_path)
+    redirect_to root_url
   end
   
   

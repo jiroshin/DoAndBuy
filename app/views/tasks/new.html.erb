@@ -79,6 +79,7 @@
       <div class="float-right"><%= task.name %></div>
     </a>
   </div>
+  <%= render 'likes/like', task: task %>
   <%= link_to(task_path(task.id)) do %>
     <i class="far fa-comment"></i> コメントで応援する
   <% end %>
@@ -96,7 +97,24 @@
 
 <!-- ▽▽▽ログインしていないとき▽▽▽ -->
 <% else %> 
+  <div style="text-align:center;">
   <%= link_to '登録', new_user_registration_path %>
   <%= link_to 'ログイン', user_session_path %>
+  </div>
 <% end %>
 
+<% @tasks.each do |task| %>
+<div class="Tasks">
+  <div class="deadline"><%= task.deadline %>までに・・・</div>
+  <div class="goal"><%= task.goal %></div>
+  <div id="wrapper" class="product clearfix">
+    <div class="korewokau">そしてこれを買う <i class="fas fa-cart-arrow-down"></i></div>
+    <a href="<%= task.url %>" target="_blank">
+      <div class="float-left"><img src="<%= task.image_url %>" alt="商品画像"></div>
+      <div class="float-right"><%= task.name %></div>
+    </a>
+  </div>
+  ♡️<%= task.likes.count %>
+  <i class="far fa-user"></i> <%= task.user.username %>
+</div>
+<% end %>

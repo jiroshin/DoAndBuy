@@ -6,5 +6,7 @@ class Task < ApplicationRecord
   validates :image_url, presence: true, length: { maximum: 250 }
   
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liking_users, through: :likes, source: :user
 end

@@ -57,3 +57,7 @@ gem 'rakuten_web_service'
 gem 'dotenv-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
+
+group :production do
+  gem 'pg', '0.21.0'
+end

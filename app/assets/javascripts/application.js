@@ -16,10 +16,6 @@
 //= require_tree .
 
 $(function() {
-  $('.single-item').slick();
-});
-
-$(function() {
   var mySwiper = new Swiper ('.swiper-container', {
     // オプション
     preventClicks: true,

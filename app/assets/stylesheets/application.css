@@ -175,6 +175,10 @@
   font-size: 90%;
 }
 
+.register_login {
+  width:400px;
+}
+
 @media (max-width: 768px) {
 .Tasks {
   width:98%;
@@ -188,6 +192,10 @@
   float: none;
   width: 95%;
   height: 150px;
+}
+
+.register_login {
+  width:300px;
 }
 
 }

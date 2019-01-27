@@ -6,8 +6,9 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:create]
   end
+  post   '/like/:task_id' , to: 'likes#like',   as: 'like'
+  delete '/like/:task_id' , to: 'likes#unlike', as: 'unlike'
   
   resource :users, only: [:show]
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
