@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   post   '/like/:task_id' , to: 'likes#like',   as: 'like'
   delete '/like/:task_id' , to: 'likes#unlike', as: 'unlike'
-  
-  resource :users, only: [:show]
+
   devise_for :users
+  resources :users, only: [:show]
 end

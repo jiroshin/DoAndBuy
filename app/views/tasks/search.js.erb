@@ -4,7 +4,6 @@ $('#Remote').empty();
   $('#Remote').append("<img src='<%= key[:image_url] %>' alt='画像' class ='product-image'><p style='background-color: grey; display:none;'><%= key[:name] %>,%¥<%= key[:url] %>,%¥<%= key[:image_url] %></p>")
 <% end %>
 
-
 $("#Remote img").on("click", function(){
 
   $('.choice-product-warrper').css('display', 'block');

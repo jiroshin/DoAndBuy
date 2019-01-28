@@ -15,7 +15,7 @@ class TasksController < ApplicationController
   
   def new
     @task = Task.new
-    @tasks = Task.limit(3).order('created_at') 
+    @tasks = Task.limit(3).order('created_at DESC') 
   end
   
   def create

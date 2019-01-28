@@ -14,10 +14,28 @@
  *= require_self
  */
 
+body {
+    font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','ＭＳ Ｐゴシック','MS PGothic','Candara','Andale Mono','Copperplate',sans-serif;
+}
+
+.top-image {
+  width:100%;
+  max-width: 100%;
+  height: auto;
+}
+
 .title {
   font-size: 25px;
 }
 
+footer {
+  margin-top: 100px;
+}
+
+h1 {
+  font-size:220%;
+  text-align: center;
+}
 
 .form-wrapper {
   position: relative;
@@ -38,15 +56,19 @@
 .product-image {
   padding: 20px;
   margin: 20px;
-  border: solid red 4px;
-  border-radius: 5px;
+  border: solid grey 5px;
+  border-radius: 8px;
 }
 
 .product-image:hover {
-  border: solid blue 4px;
+  border: solid red 5px;
 }
 
 .choice-product-warrper {
+  display: none;
+}
+
+.choice-meirei {
   display: none;
 }
 
@@ -63,14 +85,14 @@
     text-decoration: none;
     color: #FFF;
     background: red;/*背景色*/
-    border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+    border-bottom: solid 2px #8A0829;/*少し濃い目の色に*/
     border-radius: 4px;/*角の丸み*/
     box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
     font-weight: bold;
 }
 
 .createTask:active {
-    border-bottom: solid 2px #fd9535;
+    border-bottom: solid 2px #8A0829;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
@@ -82,14 +104,14 @@
     text-decoration: none;
     color: #FFF;
     background: red;/*背景色*/
-    border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+    border-bottom: solid 2px #8A0829;/*少し濃い目の色に*/
     border-radius: 4px;/*角の丸み*/
     box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
     font-weight: bold;
 }
 
 .createTask-next:active {
-    border-bottom: solid 2px #fd9535;
+    border-bottom: solid 2px #8A0829;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
@@ -97,24 +119,15 @@
     width: 150px;
     position: relative;
     display: inline-block;
-    padding: 0.5em 0.75em;
+    padding: 0.4em 0.65em;
     text-decoration: none;
-    color: #FFF;
-    background: grey;/*背景色*/
-    border-bottom: solid 2px black;/*少し濃い目の色に*/
+    color: red;
+    background: white;/*背景色*/
+    border : solid 3px red;/*少し濃い目の色に*/
     border-radius: 4px;/*角の丸み*/
-    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
     font-weight: bold;
 }
 
-.createTask-button:active {
-    border-bottom: solid 2px #fd9535;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
-}
-
-.search_box {
- 
-}
 
 .createTask-nextSearch {
   display: none;
@@ -199,8 +212,9 @@
 
 .comment-index {
   margin:0 auto;
-  width:400px;
+  width:450px;
   margin-bottom: 10px;
+  border-bottom: 3px solid red;
 }
 
 #task_goal {
@@ -210,6 +224,71 @@
 #task_deadline {
   width:70%;
   margin:0 auto 10px;
+}
+
+.base_btn {
+    position: relative;
+    display: inline-block;
+    padding: 1em 4em;
+    text-decoration: none;
+    color: #FFF;
+    background: red;/*背景色*/
+    border-bottom: solid 2px #8A0829;/*少し濃い目の色に*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+}
+
+.base_btn:active {
+    border-bottom: solid 2px #8A0829;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+.base_btn-top {
+    padding: 1em 10em;
+    margin: 70px 0px 10px;
+}
+
+.comment-btn {
+  padding: 0.75em 2em;
+  margin: 10px 0;
+}
+
+.login-form {
+  margin-bottom: 25px;
+}
+
+.notice {
+  width:70%;
+  border:3px solid blue;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.notice-space {
+  margin:50px 0 70px;
+}
+
+.btn-danger {
+  background-color: white;
+  margin-bottom:4px;
+}
+
+.comment-user {
+  font-size: 130%;
+}
+
+.comment-content {
+  font-size: 140%;
+}
+
+.go-show:link {
+  color: black;
+}
+
+.go-show:visited {
+  color: black;
 }
 
 
@@ -238,11 +317,32 @@
 }
 
 .comment-index {
-  width:300px;
+  width:350px;
 }
 
 #task_deadline {
   width:100%;
+}
+
+.notice {
+  width:100%;
+  border:2px solid blue;
+}
+
+.form-group {
+  width: 100%;
+}
+
+h1 {
+  font-size:160%;
+}
+
+.createTask-button {
+  margin-top: 10px;
+}
+
+.title-message {
+  font-size: 140%;
 }
 
 }

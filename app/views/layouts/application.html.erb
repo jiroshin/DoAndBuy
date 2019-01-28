@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>買う前にやる</title>
+    <title>買う前に目標を！</title>
+    <meta name="description" content="ついつい何でもを買いすぎていませんか？欲しいものがあるなら買う前についでに目標を立てて達成しちゃおう！みんなで応援し合ってみんなで幸せに！そんなサービスができました。">
     <%= csrf_meta_tags %>
     
     <!-- Bootstrap CSS-->
@@ -16,6 +17,9 @@
     
     <!-- FontAwesome -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" rel="stylesheet">
     
     <!-- app/assets/stylesheets -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -32,10 +36,18 @@
     <%= render 'layouts/navbar' %>
     <div class="container">
     
-    <div style="text-align:center;">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="notice-space"> 
+    <% if flash[:notice] %>
+      <div class="notice animated bounce">
+        <%= flash[:notice]%>
+      </div>
+    <% elsif flash[:alert] %>
+      <div class="notice animated bounce">
+        <%= flash[:alert]%>
+      </div>
+    <% end %>
     </div>
+    
   
     <%= yield %>
     </div>

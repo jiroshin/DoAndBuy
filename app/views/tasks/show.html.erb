@@ -13,7 +13,7 @@
   <% if current_user == @task.user %>
     <%= link_to "削除する", task_path(@task.id), method: :delete, data: { confirm: "本当に削除しますか?" }, class: 'btn btn-danger btn-xs' %>
   <% end %>
-  <%= link_to(users_path(@task.user)) do %>
+  <%= link_to(user_path(@task.user)) do %>
     <i class="far fa-user"></i> <%= @task.user.username %>
   <% end %>
   </div>
@@ -24,15 +24,22 @@
   <%= f.text_field :content, class: 'form-control comment-form' %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :task_id, :value => @task.id %>
-  <%= f.submit 'コメントする' %>
+  <%= f.submit 'コメントする', class: "base_btn comment-btn"  %>
 <% end %>
 
-<h2 style="text-align:center;">コメント一覧</h2>
+<% if @comments.present? %>
+<h2 style="text-align:center; margin: 60px 0px 30px;"><i class="far fa-comments"></i> コメント</h2>
 <% @comments.each do |c| %>
   <div class="comment-index">
-  <i class="far fa-user"></i> <%= c.user.username %> : <%= c.content %>
+     <div class="comment-user">
+         <%= link_to(user_path(c.user)) do %>
+             <i class="far fa-user"></i> <%= c.user.username %>
+         <% end %>
+     <div class="comment-content"><%= c.content %></div>
+     </div>
   </div>
+<% end %>
 <% end %>
 
 
-<center><%= link_to 'Toppageへ戻る', root_url %></center>
+<center style="margin-top: 50px;"><%= link_to 'Toppageへ戻る', root_url %></center>
